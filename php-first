@@ -1,0 +1,46 @@
+<?php
+if(isset($_GET['info']))
+{
+    $info = $_GET['info'];
+    echo $info;
+}
+
+
+elseif (isset($_GET['num'])) 
+{
+    $num = $_GET['num'];
+    if($num > 1000)
+    {
+        echo 'Number must be less 100';
+        exit;
+    }
+    function isPrime($n) 
+    {
+        if ($n <= 1) 
+        {
+          return false;
+        }
+        for ($i = 2; $i <= sqrt($n); $i++) 
+       {
+          if ($n % $i === 0) 
+          {
+            return false;
+          }
+        }
+        return true;
+      }
+    
+      $primeNumbers = [];
+      for ($i = 2; $i <= $num; $i++) 
+     {
+        if (isPrime($i))
+        {
+          $primeNumbers[] = $i;
+        }
+      }
+      echo "Array of prime numbers" . implode(", ", $primeNumbers);
+    } else 
+    {
+      echo "NO parameters";
+    }
+?>
